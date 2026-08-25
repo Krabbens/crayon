@@ -1,0 +1,4 @@
+interface:
+  display_name: "Crayon"
+  short_description: "Deep thinking in simple, concrete language"
+  default_prompt: "Use $crayon to explain this with simple words and concrete examples without losing important details."
