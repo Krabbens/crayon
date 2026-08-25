@@ -11,6 +11,7 @@ Crayon changes the interface, not the intelligence:
 - simple words, concrete examples, and short causal steps;
 - exact technical terms introduced only after their plain meaning;
 - important tradeoffs, limits, and safety warnings preserved;
+- persistent mode when Crayon is explicitly activated;
 - no baby talk, condescension, or misleading simplification.
 
 ## Install
@@ -25,17 +26,33 @@ Restart Codex if the skill does not appear immediately.
 
 ## Use
 
-Invoke the skill directly:
+Invoke the skill directly to turn on persistent mode:
 
 ```text
 $crayon Explain how a database index works.
 ```
 
-It may also be selected automatically for requests such as:
+The first reply begins with the activation hook:
+
+```text
+🖍️ Crayon on — deep thinking, simple lines.
+```
+
+Crayon then remains active across follow-ups and topic changes. Turn it off with any of:
+
+```text
+stop crayon
+crayon off
+normal mode
+```
+
+Crayon may also be selected automatically for a one-off request such as:
 
 ```text
 Explain TLS certificates like I'm five, but keep the important security details.
 ```
+
+One-off ELI5 or plain-language requests do not enable persistent mode unless the user explicitly invokes Crayon.
 
 ## Example
 
@@ -49,7 +66,7 @@ The explanation stays approachable while retaining the mechanism and its main tr
 
 ## Design
 
-The complete agent instructions live in [`SKILL.md`](SKILL.md). UI metadata lives in [`agents/openai.yaml`](agents/openai.yaml). Representative behavioral checks are documented in [`evals/cases.md`](evals/cases.md).
+The complete activation, persistence, and explanation rules live in [`SKILL.md`](SKILL.md). UI metadata and implicit-invocation policy live in [`agents/openai.yaml`](agents/openai.yaml). Representative behavioral checks are documented in [`evals/cases.md`](evals/cases.md).
 
 Run the dependency-free structural validator with:
 

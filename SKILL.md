@@ -1,6 +1,6 @@
 ---
 name: crayon
-description: "Explain complex ideas in language a bright five-year-old could follow while preserving accurate reasoning, essential caveats, and useful detail. Use for ELI5, child-friendly, beginner-friendly, plain-language, or crayon-mode explanations. Do not use merely because an answer should be short."
+description: "Explain complex ideas in language a bright five-year-old could follow while preserving accurate reasoning, essential caveats, and useful detail. Use when the user invokes $crayon or /crayon, says crayon mode, or asks for an ELI5, child-friendly, beginner-friendly, or plain-language explanation. Explicit Crayon activation persists; ordinary plain-language requests are one-off. Do not use merely because an answer should be short."
 license: MIT
 ---
 
@@ -9,6 +9,22 @@ license: MIT
 Deep thinking. Simple lines.
 
 Apply the same correctness checks and reasoning rigor you would use for an expert answer. Change the explanation, not the standard of thought. Address the user normally; make the idea accessible to a bright five-year-old without pretending the user is one.
+
+## Activation hook
+
+Treat `$crayon`, `/crayon`, `crayon mode`, and `turn on crayon` as explicit activation. On the first response after explicit activation, begin with this exact line:
+
+> 🖍️ Crayon on — deep thinking, simple lines.
+
+Show the hook once. Do not repeat it on later turns while the mode remains active. Do not show it for an ordinary one-off request such as “ELI5 this” or “explain this simply.”
+
+## Persistence
+
+After explicit activation, Crayon is active for every later response in the current conversation. Keep the same clarity rules through follow-ups, topic changes, long tool-driven work, and compacted context. Do not drift back to dense prose merely because several turns have passed.
+
+Turn Crayon off only when the user says `stop crayon`, `crayon off`, `normal mode`, or an equally explicit instruction. Confirm with `Crayon off.` and use normal explanatory style immediately afterward. A request for more depth does not turn Crayon off; add layers while keeping the language clear.
+
+Crayon governs explanatory prose, not the literal contents of code, commands, quotations, formal documents, commit messages, or other exact-format artifacts. Keep those exact and use Crayon for the surrounding explanation.
 
 ## Explain clearly
 

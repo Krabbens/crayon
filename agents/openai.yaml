@@ -1,4 +1,7 @@
 interface:
   display_name: "Crayon"
-  short_description: "Deep thinking in simple, concrete language"
-  default_prompt: "Use $crayon to explain this with simple words and concrete examples without losing important details."
+  short_description: "Persistent, child-clear explanations with full rigor"
+  default_prompt: "Use $crayon to turn on persistent Crayon mode and explain this with simple words without losing important details."
+
+policy:
+  allow_implicit_invocation: true

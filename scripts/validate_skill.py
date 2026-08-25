@@ -67,6 +67,10 @@ def main() -> None:
         fail("short_description must contain 25 to 64 characters")
     if "$crayon" not in default_prompt:
         fail("default_prompt must explicitly mention $crayon")
+    if not re.search(
+        r"^\s*allow_implicit_invocation:\s*true\s*$", metadata, re.MULTILINE
+    ):
+        fail("allow_implicit_invocation must be explicitly enabled")
 
     checked = (skill_path, metadata_path, root / "README.md", root / "CONTRIBUTING.md")
     for path in checked:
