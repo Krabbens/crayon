@@ -4,15 +4,16 @@
 
 > Deep thinking. Simple lines.
 
-Crayon is a Codex skill for explaining difficult ideas in language a bright five-year-old could follow—without weakening the reasoning, hiding uncertainty, or dropping important caveats.
+Crayon is a Codex skill for explaining difficult ideas in plain language, with the detail needed to answer your question.
 
-Crayon changes the interface, not the intelligence:
+It adapts to what you already know:
 
-- simple words, concrete examples, and short causal steps;
-- exact technical terms introduced only after their plain meaning;
-- important tradeoffs, limits, and safety warnings preserved;
+- adult beginner explanations by default; child-level explanations when requested;
+- direct answers, with examples or analogies when they help;
+- standard technical names, with unfamiliar terms briefly explained;
+- facts, limits, and warnings needed for an accurate answer;
 - persistent mode when Crayon is explicitly activated;
-- no baby talk, condescension, or misleading simplification.
+- length and depth matched to the current request.
 
 ## Install
 
@@ -32,13 +33,13 @@ Invoke the skill directly to turn on persistent mode:
 $crayon Explain how a database index works.
 ```
 
-The first reply begins with the activation hook:
+Crayon briefly confirms activation in your language, for example:
 
 ```text
-🖍️ Crayon on — deep thinking, simple lines.
+🖍️ Crayon on.
 ```
 
-Crayon then remains active across follow-ups and topic changes. Turn it off with any of:
+The confirmation is omitted when you request an exact output format, such as JSON only. The plain-language preference remains active across follow-ups and topic changes; your current request still determines language, depth, length, and format. Turn it off with any of:
 
 ```text
 stop crayon
@@ -52,7 +53,7 @@ Crayon may also be selected automatically for a one-off request such as:
 Explain TLS certificates like I'm five, but keep the important security details.
 ```
 
-One-off ELI5 or plain-language requests do not enable persistent mode unless the user explicitly invokes Crayon.
+One-off ELI5 or plain-language requests do not enable persistent mode unless the user explicitly invokes Crayon. Quoting or discussing the skill's name does not activate it.
 
 ## Example
 
@@ -60,9 +61,9 @@ One-off ELI5 or plain-language requests do not enable persistent mode unless the
 
 **Crayon-style answer:**
 
-> Imagine a big book of names. Without an index, the database may need to check every page to find “Maya.” An index is a smaller, sorted list that says where each name lives, so the database can jump close to the right place. The tradeoff is that the index takes extra space and must also be updated whenever the data changes.
+> An index helps a database find matching records without checking every record in turn. It takes extra space and needs updating when the indexed data changes.
 
-The explanation stays approachable while retaining the mechanism and its main tradeoff.
+Ask for more depth to explore how the index works internally.
 
 ## Design
 
@@ -73,6 +74,8 @@ Run the dependency-free structural validator with:
 ```bash
 python3 scripts/validate_skill.py .
 ```
+
+This checks repository structure. Evaluate clarity, accuracy, and unnecessary repetition separately using the behavioral cases.
 
 ## Contributing
 
